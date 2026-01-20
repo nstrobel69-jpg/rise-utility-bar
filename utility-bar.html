@@ -1,15 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Utility Bar</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { margin:0; }
+    #utilityBar {
+      background:#007bff;
+      color:#fff;
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* Modal styling */
+    #modal {
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      z-index:9999;
+    }
+
+    #modalContent {
+      background:#fff;
+      width:90%;
+      height:80%;
+      margin:40px auto;
+      padding:20px;
+      overflow:auto;
+      border-radius:8px;
+    }
+
+    #closeBtn {
+      float:right;
+      cursor:pointer;
+      font-size:20px;
+    }
+  </style>
 </head>
-<body class="utility-bar">
+<body>
 
-  <button onclick="openGlossary()">📘 Glossary</button>
-  <button onclick="openNotes()">📝 Notes</button>
+<div id="utilityBar">
+  <button onclick="openGlossary()">Glossary</button>
+</div>
 
-  <script src="script.js"></script>
+<!-- Modal -->
+<div id="modal">
+  <div id="modalContent">
+    <span id="closeBtn" onclick="closeModal()">✖</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+  function openGlossary() {
+    // Load glossary.html inside modal
+    fetch('glossary.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('modalBody').innerHTML = html;
+        document.getElementById('modal').style.display = 'block';
+      });
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
+
 </body>
 </html>
+
