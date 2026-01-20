@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Utility Bar */
+.utility-bar {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: #1f2937;
+}
+
+.utility-bar button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.utility-bar button:hover {
+  background: #1d4ed8;
+}
+
+/* Panels */
+.panel {
+  padding: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 250px;
+  font-size: 14px;
+  padding: 10px;
+}

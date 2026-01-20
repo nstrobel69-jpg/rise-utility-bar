@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="panel">
+
+  <h2>My Notes</h2>
+
+  <textarea id="notes" placeholder="Type your notes here..."></textarea>
+
+  <script>
+    const notes = document.getElementById('notes');
+
+    notes.value = localStorage.getItem('riseNotes') || '';
+
+    notes.addEventListener('input', () => {
+      localStorage.setItem('riseNotes', notes.value);
+    });
+  </script>
+
+</body>
+</html>
