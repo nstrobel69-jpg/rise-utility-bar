@@ -4,117 +4,103 @@
   <meta charset="UTF-8">
   <title>Utility Bar</title>
   <style>
-    body { margin:0; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Utility bar */
     #utilityBar {
-      background:#007bff;
-      color:#fff;
-      height:60px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: #007bff;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
     }
 
-    /* Modal styling */
-    #modal {
-      display:none;
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.6);
-      z-index:9999;
+    #utilityBar button {
+      background: #fff;
+      color: #007bff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    #modalContent {
-      background:#fff;
-      width:90%;
-      height:80%;
-      margin:40px auto;
-      padding:20px;
-      overflow:auto;
-      border-radius:8px;
+    /* Full-screen overlay */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999999;
+    }
+
+    #overlayContent {
+      background: #fff;
+      width: 90%;
+      height: 90%;
+      margin: 5% auto;
+      padding: 20px;
+      overflow: auto;
+      border-radius: 10px;
+      position: relative;
     }
 
     #closeBtn {
-      float:right;
-      cursor:pointer;
-      font-size:20px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<div id="utilityBar">
- <button onclick="openGlossary()">Glossary</button>
-
-<script>
-  function openGlossary() {
-    // Expand iframe to full screen
-    parent.document.querySelector('iframe').style.position = 'fixed';
-    parent.document.querySelector('iframe').style.top = '0';
-    parent.document.querySelector('iframe').style.left = '0';
-    parent.document.querySelector('iframe').style.width = '100vw';
-    parent.document.querySelector('iframe').style.height = '100vh';
-    parent.document.querySelector('iframe').style.zIndex = '999999';
-
-    // Load glossary into iframe body
-    fetch('glossary.html')
-      .then(res => res.text())
-      .then(html => {
-        document.body.innerHTML = `
-          <div style="position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:999999;">
-            <button onclick="closeGlossary()" style="position:absolute; top:10px; right:10px; font-size:24px;">✖</button>
-            <div style="padding:20px; overflow:auto; height:100%;">
-              ${html}
-            </div>
-          </div>
-        `;
-      });
-  }
-
-  function closeGlossary() {
-    // Reset iframe back to bar size
-    parent.document.querySelector('iframe').style.width = '100%';
-    parent.document.querySelector('iframe').style.height = '60px';
-    parent.document.querySelector('iframe').style.position = 'fixed';
-    parent.document.querySelector('iframe').style.top = '0';
-    parent.document.querySelector('iframe').style.left = '0';
-    parent.document.querySelector('iframe').style.zIndex = '999999';
-
-    // Reload the utility bar inside iframe
-    window.location.reload();
-  }
-</script>
-</div>
-
-<!-- Modal -->
-<div id="modal">
-  <div id="modalContent">
-    <span id="closeBtn" onclick="closeModal()">✖</span>
-    <div id="modalBody"></div>
+  <!-- Utility bar -->
+  <div id="utilityBar">
+    <button onclick="openGlossary()">Glossary</button>
   </div>
-</div>
 
-<script>
-  function openGlossary() {
-    // Load glossary.html inside modal
-    fetch('glossary.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('modalBody').innerHTML = html;
-        document.getElementById('modal').style.display = 'block';
-      });
-  }
+  <!-- Overlay -->
+  <div id="overlay">
+    <div id="overlayContent">
+      <button id="closeBtn" onclick="closeGlossary()">✖</button>
+      <div id="overlayBody"></div>
+    </div>
+  </div>
 
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-  }
-</script>
+  <script>
+    function openGlossary() {
+      fetch('glossary.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('overlayBody').innerHTML = html;
+          document.getElementById('overlay').style.display = 'block';
+        })
+        .catch(err => console.error('Error loading glossary:', err));
+    }
+
+    function closeGlossary() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
-
-
-
-
