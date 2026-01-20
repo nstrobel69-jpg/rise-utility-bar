@@ -53,8 +53,8 @@
     fetch('glossary.html')
       .then(res => res.text())
       .then(html => {
-        // Send glossary HTML to parent page
-        parent.postMessage({ type: 'openGlossary', html: html }, '*');
+        // Send to parent
+        parent.postMessage({ type: 'openOverlay', html: html }, '*');
       });
   }
 </script>
@@ -86,5 +86,6 @@
 
 </body>
 </html>
+
 
 
