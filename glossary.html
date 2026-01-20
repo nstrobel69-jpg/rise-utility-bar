@@ -1,22 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Glossary</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f7f7f7;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+  .search {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .scroll-box {
+    height: 330px;      /* Shows approx 6 terms at a time */
+    overflow-y: auto;
+    padding-right: 10px;
+    border-top: 1px solid #eee;
+  }
+
+  .term {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+  }
+
+  .term:hover {
+    background: #f9f9f9;
+  }
+
+  .term h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .definition {
+    display: none;
+    padding: 10px 12px 12px;
+    background: #fafafa;
+    border-left: 4px solid #007bff;
+  }
+</style>
 </head>
-<body class="panel">
+<body>
+<div class="container">
+  <h1>Glossary</h1>
+  <input type="text" class="search" placeholder="Search terms..." id="search">
 
-  <h2>Glossary</h2>
+  <div class="scroll-box" id="glossary">
+    <div class="term">
+      <h3>Formation Pressure</h3>
+      <div class="definition">The pressure in the spaces between the molecules of rock in the formation or reservoir where the oil and gas is found.</div>
+    </div>
 
-  <p><strong>MAASP</strong><br>
-  Maximum Allowable Annular Surface Pressure.</p>
+    <div class="term">
+      <h3>Hydrostatic Pressure</h3>
+      <div class="definition">The pressure created by a column of fluid. The taller/deeper the column the more pressure it creates.
+         The Formula to find it is: HP = Fluid density (PPG) x Vertical Depth of column (TVD)</div>
+    </div>
 
-  <p><strong>LOT</strong><br>
-  Leak-Off Test pressure.</p>
+    <div class="term">
+      <h3>Density(PPG)</h3>
+      <div class="definition">Often referred to as the "Weight" of a fluid. The higher the density, the more hydrostatic pressure the fluid will create. Density is measured
+        by how many pounds a gallon of it weighs. The unit is Pounds Per Gallon or ppg. Oil is lighter than water. Fresh water is lighter than brine. Brine is lighter than mud. 
+        Fresh water has a density of 8.33 ppg.
+      </div>
+    </div>
 
-  <p><strong>Mud Weight</strong><br>
-  Density of drilling fluid, measured in PPG.</p>
+    <div class="term">
+      <h3>Gradient</h3>
+      <div class="definition">Refers to how much pressure one vertical foot of a fluid creates. Measured in psi/ft. If a fluid has a graident of 0.4332 psi/ft, then 
+        100 feet of it in a well would create 43.32 psi of hydrostatic pressure at the bottom of the column.</div>
+    </div>
 
+    <div class="term">
+      <h3>Bottomhole Pressure(BHP)</h3>
+      <div class="definition">The pressure at the bottom of the wellbore. Factors such as formation pressure, hydrostatic pressure, pump pressure, and well depth and length all 
+        contribute to BHP.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Overbalanced Wellbore</h3>
+      <div class="definition">The condition of a well in which the hydrostatic pressure of the fluid in the well is greater than the formation pressure of the reservoir. 
+        In this state the fluid level will sometimes drop and feed fluid into the formation.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Balanced Wellbore</h3>
+      <div class="definition">The condition of a well in which the hydrostatic pressure of the fluid in the well is equal to the formation pressure of the reservoir. 
+        In this state the fluid level will neither rise nor drop.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Underbalanced Wellbore</h3>
+      <div class="definition">The condition of a well in which the hydrostatic pressure of the fluid in the well is less than the formation pressure of the reservoir.
+        In this state the fluid level will often rise and formation fluids including oil and/or gas can enter the wellbore.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>SICP</h3>
+      <div class="definition">Shut in Casing Pressure. The pressure that has built up once the well is shut in with a barrier at surface. This is the pressure that we see when 
+        we check the casing valve below the frac valve. It is equal to the difference between the formation pressure and the hydrostatic pressure in an underbalanced wellbore. 
+        SICP = FP - HP. For example if there is 2000psi of hydrostatic pressure and the formation pressure is 3000psi, the SICP would be 1000psi.  
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Vertical Section</h3>
+      <div class="definition">The section of the well that runs vertically from the surface down to the curve.</div>
+    </div>
+
+    <div class="term">
+      <h3>Curve, Heel, Kick-off(KOP)</h3>
+      <div class="definition">The section of the well where its path goes from vertical to horizontal. This section is often about a thousand feet long.</div>
+    </div>
+
+    <div class="term">
+      <h3>Lateral Section</h3>
+      <div class="definition">The section of the well that travels out horizontally.This section is drilled through the sections of the formation containing the oil or gas. 
+        It is the section that has the perforations and plugs.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Total Depth(TD)</h3>
+      <div class="definition">This most often refers to the very end of the well where the casing ends.</div>
+    </div>
+
+    <div class="term">
+      <h3>Total Vertical Depth(TVD)</h3>
+      <div class="definition">This measurement refers to the vertical distance between any point in the well and the point on surface directly above it. It does not necessarily 
+        follow the path of the well. This measurement is used when calculating HP.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Measured Depth(MD)</h3>
+      <div class="definition">This measurement regers to the distance of any point along the path of the well. Think of it as how many feet of pipe would be
+         required to reach that point in the well. This measurement is used when calculating pumping volumes.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Kelly Bushing(KB)</h3>
+      <div class="definition">Refers to the height from the ground to the rig floor on the drilling rig that was used to drill the well. On older conventional drilling rigs, 
+        the kelly bushing was a piece set in the rig floor that was used to rotate pipe, before top drives came into use.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>FT/KB</h3>
+      <div class="definition">The level of the rig floor on the drilling rig is always used as the point of reference for the depth of tools, perforations, or other points 
+        within the well. If you see the depth of a plug at 8300 ft/kb, it means that the plug is 8300 ft. from the level that the rig floor was, while the rig was drilling. 
+        Even though the drilling rig is gone, the same level is used for the whole life of the well. This measurement is similar to MD but a little more specific.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Barrier</h3>
+      <div class="definition">A device or structure that prevents the escape of fluid from the well. Examples are casing, frac valves, BOPs, back-pressure valves, etc. 
+        Different well control groups have different definitions of a barrier. For example, some consider fluid in the well as a barrier since it prevents fluid from flowing 
+        out of the formation, some do not. Think of a barrier as anything that prevents flow.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Well Envelope</h3>
+      <div class="definition">This refers to all of the components that collectively prevent the flow or escape of pressurized fluid. While snubbing it would include the casing, 
+        cement, tubing spool, casing valves, frac valve, primary BOP stack components, snubbing unit BOPs, tubing, and plugs or BPV in the tubing. If any of these failed, fluid 
+        would be allowed to escape the well. During different operations it can involve different components.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Working Barrier</h3>
+      <div class="definition">The barrier that is being used to control fluid during any given operation. While snubbing this is usually the stripping BOP. While a drilling 
+        rig is drilling the well, this is usually drilling mud. During wireline operations, this would be the stuffing box.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Primary Well Control Barrier</h3>
+      <div class="definition">This is another term that can have different definitions depending on who you talk to. For the scope of this course, it will refer to the barrier 
+        that would be closed if the working barrier were to fail. when snubbing, if the stripping ram or bag were to fail, we would close the primary pipe ram(aka uppers, middles, or lowers) 
+        in order to secure the well. If the BPV in the string were to fail, a TIW would be installed as primary well control.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Secondary Well Control Barrier</h3>
+      <div class="definition">Refers to further barriers that could be closed if the primary barriers were to fail.</div>
+    </div>
+
+    <div class="term">
+      <h3>Tertiary Well Control Barrier</h3>
+      <div class="definition">Refers to “emergency” barriers that would be closed when all else has failed. The most common example of this would be shear rams.</div>
+    </div>
+
+    <div class="term">
+      <h3>Redundancy</h3>
+      <div class="definition">- The idea that there is always a back-up system in case the primary system fails. 
+        For example, we have a lower set of primary pipe rams below the upper set that we can use if the upper set fails. 
+      Another example is having a second pump system on the accumulator that can charge the accumulator if the primary pump fails. </div>
+    </div>
+
+    <div class="term">
+      <h3>Kick</h3>
+      <div class="definition">An unexpected or unintentional influx of formation fluid into the wellbore. A gas bubble that enter if flow back doesn’t shut in properly would be an example of a kick.</div>
+    </div>
+
+    <div class="term">
+      <h3>Blowout</h3>
+      <div class="definition">An uncontrolled release of wellbore fluid. Occurs most often at the surface but underground blowouts are possible as well.</div>
+    </div>
+
+    <div class="term">
+      <h3>Migration</h3>
+      <div class="definition">When an amount of fluid of different characteristics travels through the main fluid in the wellbore. 
+        An example is when a bubble of gas enters the wellbore at the perforations and migrates up to surface through the brine being used to drill.
+        Sometimes different density fluids will migrate or settle to different levels if not circulated regularly.  
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Viscosity</h3>
+      <div class="definition">A property of fluid that indicates its resistance to flow. Ketchup is more viscous than hot sauce. 
+        Higher viscosity fluids are better at carrying solids to surface from down in the well. That’s why we pump gel sweeps to clean sand and plug parts from the well.
+      </div>
+    </div>
+
+    <div class="term">
+      <h3>Pipe on Pipe (PoP)</h3>
+      <div class="definition">A chemical pumped into the well to coat the metal surfaces downhole in order to allow them to slide over one another with less friction. It’s basically lubrication for metal-to-metal contact. PoP helps keep torque and string weights at more manageable levels.</div>
+    </div>
+
+    <div class="term">
+      <h3>Friction Reducer (FR)</h3>
+      <div class="definition">A chemical pumped into the well to coat the surfaces in order to allow fluid to flow over them with less resistance. If the fluid can pass over the metal surfaces with less resistance, then it takes less pump pressure to push it through the well. FR helps keep pump pressures lower.</div>
+    </div>
+
+    <div class="term">
+      <h3>Hydrate</h3>
+      <div class="definition">When water that has been dissolved in gas comes out and freezes creating ice-like accumulations in wells, flow lines, pipelines, etc. This happens when gas changes pressure and temperature. Seen often in gas wells near surface, inside BOP stacks, and in flowback equipment. This is different from when water freezes in equipment during cold weather.</div>
+    </div>
+
+    <div class="term">
+      <h3>Permeability</h3>
+      <div class="definition">Measures the ability of rock to allow fluids to move through it. If a layer of rock is not very permeable, it’s hard for oil or gas to flow through it and into the wellbore. In this case, fracking is used to open channels in the rock so the oil and gas can flow through it.</div>
+    </div>
+
+    <div class="term">
+      <h3>Circulating</h3>
+      <div class="definition">When fluid is pumped into the well, stack, or surface line assembly. Normally fluid leaves the well too, though in some instances such as bullheading fluid is pumped in with no returns coming out.</div>
+    </div>
+
+    <div class="term">
+      <h3>Forward Circulation</h3>
+      <div class="definition">When fluid is pumped down the tubing or drill pipe and returns are taken out from the back side/annulus. This is the normal way to circulate while drilling. Fluid leaves from the pump, up the standpipe, through the kelly hose and swivel, down the tubing, out the bit, back up the annulus, out the flow-cross, through flowback equipment, into the tanks, then back to the pump.</div>
+    </div>
+
+    <div class="term">
+      <h3>Reverse Circulation</h3>
+      <div class="definition">This method of circulating involves pumping down the annulus and taking returns up the tubing. It is not a very common form of circulation.</div>
+    </div>
+
+    <div class="term">
+      <h3>Bullhead</h3>
+      <div class="definition">Involves pumping fluid into a well without taking returns. Fluid is forced down the well and back into the formation. Before pipe is tripped into a well, heavier fluid can be bull headed down the well to add more HP and decrease surface pressure.</div>
+    </div>
+
+    <div class="term">
+      <h3>Annulus</h3>
+      <div class="definition">The space between any two strings of pipe. The most common annulus seen is the annulus between the outside of the tubing and the inside of the casing.</div>
+    </div>
+
+    <div class="term">
+      <h3>Capacity</h3>
+      <div class="definition">The amount of fluid that a foot of a given space can hold. For example, a foot of tubing could hold 0.00524 barrels. The capacity of that pipe would be 0.00524 bbls/ft.</div>
+    </div>
+
+    <div class="term">
+      <h3>Volume</h3>
+      <div class="definition">The total amount of fluid in a given space. When looking at pipe, the capacity is multiplied by the length to give the volume. Example: capacity of 0.00524 multiplied by 11,000 ft equal a total volume of 57.64 barrels (bbls.).</div>
+    </div>
+
+    <div class="term">
+      <h3>Tubing capacity/volume</h3>
+      <div class="definition">The capacity or volume between two strings of pipe. Most often between the tubing and the production casing.</div>
+    </div>
+
+    <div class="term">
+      <h3>Casing capacity/volume</h3>
+      <div class="definition">The capacity or volume of the casing in the well when there is no tubing in it.</div>
+    </div>
+
+    <div class="term">
+      <h3>Annular capacity/volume</h3>
+      <div class="definition">The capacity or volume between two strings of pipe. Most often between the tubing and the production casing. (Csg. Cap – Tbg. Cap. – Tbg. Disp.) x Length of annulus</div>
+    </div>
+
+    <div class="term">
+      <h3>Open-ended displacement</h3>
+      <div class="definition">The amount of fluid that a string of pipe with no plug in the end would displace if it were run into a well full of fluid. It is exactly equal to the volume of metal making up the pipe. Found in the tally book under tubing displacement. Measured in bbls/ft.</div>
+    </div>
+
+    <div class="term">
+      <h3>Closed-ended displacement</h3>
+      <div class="definition">The amount of fluid a string of pipe with a plug in the end would displace if it were run into a well full of fluid. It is equal to the volume of metal making up the pipe, and the volume of space inside the pipe (tubing capacity). Found by adding the tubing displacement and tubing capacity measurements found in the tally book. Measured in bbls/ft.</div>
+    </div>
+
+    <div class="term">
+      <h3>Primary Blow Out Preventer (BOP)</h3>
+      <div class="definition">Can be either a ram-type preventer or an annular-type preventer. In completion and workover operations, the ram-type is the most common. Primary BOPs are normally rigged up directly on top of the frac valve and are used to close in the well when there is an emergency, a prolonged period of stoppage in work, when repairs need to be made to the rig or snubbing unit, etc.  The primary BOP stack will include components that can close the well in with pipe running through the stack or without. It will often also include a tertiary component such as a shear ram to cut any tubulars that are in the stack.</div>
+    </div>
+
+    <div class="term">
+      <h3>Stripping BOP</h3>
+      <div class="definition">Stripping BOPs are designed to contain pressurized fluid while having pipe moved through them while in the closed position. Stripping is defined as the act of moving pipe through a closed BOP. Stripping BOPs are integral parts of a snubbing unit and can come as either ram-type, or annular-type components.</div>
+    </div>
+
+    <div class="term">
+      <h3>Accumulator</h3>
+      <div class="definition">In the scope of this course, accumulator refers to a device that controls the functions of well control equipment. It includes pumping systems, hydraulic fluid reservoirs, piping and hosing, and control valves. It has numerous built in redundancies that ensure it is able to function the well control equipment and secure the well at any time. The Primary Accumulator controls the BOP components in the Primary BOP Stack, and the accumulator in the snubbing unit power pack controls the well control components on the accumulator circuit of the unit. This mainly includes slips, stripping BOPs, and pressure control valves.</div>
+    </div>
+
+    <div class="term">
+      <h3>Wellhead</h3>
+      <div class="definition">This refers to the surface components of the well itself. It can include casing heads, tubing spools, adapter spools, casing valves, gate valves, and production equipment such as chokes. It does not include frac valves or BOP equipment.</div>
+    </div>
+
+    <div class="term">
+      <h3>X-mas tree, production tree</h3>
+      <div class="definition">Refers to the series of valves and flow control equipment that is installed onto the tubing/casing head. It is used to direct the flow of fluids from the wellbore and into production equipment.</div>
+    </div>
+
+    <div class="term">
+      <h3>Tubing spool, production casing head, B-section, tubing hanger flange</h3>
+      <div class="definition">Refers to the casing head installed on the production casing at surface. It often has casing valves to access the wellbore, a shoulder or seat to support a tubing hanger which suspends the production string, and a series of lag screws.</div>
+    </div>
+
+    <div class="term">
+      <h3>Lag screw, hanger pin</h3>
+      <div class="definition">A component of the wellhead that holds the tubing hanger in place inside the tubing hanger spool.</div>
+    </div>
+
+    <div class="term">
+      <h3>Casing head</h3>
+      <div class="definition">A structural assembly that is installed onto a casing string to seal it off from other strings, and to provide a structural support system for subsequent tubular strings and wellhead components.</div>
+    </div>
+
+    <div class="term">
+      <h3>Casing valve</h3>
+      <div class="definition">Valves on the side of casing heads that allow access into the associated casing string.</div>
+    </div>
+
+    <div class="term">
+      <h3>Casing vent</h3>
+      <div class="definition">Valves and piping that allow any pressure that builds up between surface and intermediate casing strings to be vented off safely. These are the 2" tubes you see sticking up from deep down in the cellar.  They often have a ball valve on them.</div>
+    </div>
+
+    <div class="term">
+      <h3>Surface casing</h3>
+      <div class="definition">The first and largest string of casing that is run into the well and cemented by the drilling rig after the first hole section is drilled. The surface casing head is where the first set of BOPs can be rigged up on to protect the rig during subsequent phases of drilling.</div>
+    </div>
+
+    <div class="term">
+      <h3>Intermediate casing</h3>
+      <div class="definition">Subsequent strings of casing that are run in and cemented in place during drilling. These are between the surface casing and the production casing. Depending on the well construction there could be multiple strings of intermediate casing.</div>
+    </div>
+
+    <div class="term">
+      <h3>Production casing</h3>
+      <div class="definition">The final full string of casing installed and cemented in by the drilling rig. This is the casing that completion operations take place within, the string that produced oil and gas can be flowed up in the absence of a production tubing string.</div>
+    </div>
+
+    <div class="term">
+      <h3>Cement</h3>
+      <div class="definition">Cement is pumped down the casing string after it is run, then squeezed back up the outside of it. Once it sets, it provides a barrier that prevents pressurized fluid from travelling up between casing strings and provides structural support to the wellbore system.</div>
+    </div>
+
+    <div class="term">
+      <h3>Perforations</h3>
+      <div class="definition">Holes that are created in the production casing or liner to allow formation fluids to move from the reservoir rock into the wellbore. These holes are most often created by explosive charges run into the well by wireline called perf guns.</div>
+    </div>
+
+    <div class="term">
+      <h3>Hydraulic Fracturing (frac)</h3>
+      <div class="definition">The process by which large fractures are created in the formation rock to allow oil and gas to flow through it more easily and into the wellbore.</div>
+    </div>
+
+    <div class="term">
+      <h3>Frac plugs</h3>
+      <div class="definition">Bridge plugs that are installed in order to seal off lower sections of the wellbore once they are perforated and fracked. Once the frac program is complete, these plugs must be drilled out in order to allow oil and gas to flow up the wellbore to surface.</div>
+    </div>
+
+    <div class="term">
+      <h3>Profile nipple</h3>
+      <div class="definition">A component that is installed into the tubing string that allows for the installation of pressure control plugs inside the pipe. They have a series of grooves inside them that match the shape of the locking tabs or “dogs” on the plug. The dogs fit into the grooves and keep the plug in place inside the nipple.</div>
+    </div>
+
+    <div class="term">
+      <h3>Tubing plug</h3>
+      <div class="definition">A device that prevents pressurized fluid from travelling up the pipe.</div>
+    </div>
+
+    <div class="term">
+      <h3>Pump-through plug</h3>
+      <div class="definition">A tubing plug that will allow fluid to be pumped down the pipe from surface and out the tubing but will not allow pressure to come back up into the tubing from below. At DWS they are often referred to as TKX plugs.</div>
+    </div>
+
+    <div class="term">
+      <h3>Blanking plug, positive test plug</h3>
+      <div class="definition">A tubing plug that will hold pressure from above and below. Contrary to a pump through plug that will only hold pressure from below.</div>
+    </div>
+
+    <div class="term">
+      <h3>Float, back-pressure valve (BPV)</h3>
+      <div class="definition">A device that prevents pressure from coming up the tubing string but can be pumped through similar to a pump through plug. These devices are not seated in profile nipples.</div>
+    </div>
+
+    <div class="term">
+      <h3>Check set</h3>
+      <div class="definition">A device that is run by wireline to ensure that nipple set plugs are set properly into the profile nipple. They require a separate run after the plug has been set. DWS requires these to be run after pump through plugs have been set in the tubing.</div>
+    </div>
+
+    <div class="term">
+      <h3>Slip-stop</h3>
+      <div class="definition">A device set by wireline above a plug that prevents the plug from moving up the tubing string if it is dislodged from the nipple. DWS requires one of these to be set above any two-piece blanking plugs.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const glossary = document.getElementById("glossary");
+
+  function sortTerms() {
+    const terms = Array.from(glossary.querySelectorAll(".term"));
+    terms.sort((a, b) => {
+      const nameA = a.querySelector("h3").innerText.toLowerCase();
+      const nameB = b.querySelector("h3").innerText.toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+    terms.forEach(term => glossary.appendChild(term));
+  }
+
+  // Sort on load
+  sortTerms();
+
+  // Toggle definition
+  glossary.querySelectorAll(".term").forEach(term => {
+    term.addEventListener("click", () => {
+      const def = term.querySelector(".definition");
+      def.style.display = def.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  // Search filter and re-sort
+  document.getElementById("search").addEventListener("input", (e) => {
+    const filter = e.target.value.toLowerCase();
+    glossary.querySelectorAll(".term").forEach(term => {
+      const title = term.querySelector("h3").textContent.toLowerCase();
+      term.style.display = title.includes(filter) ? "block" : "none";
+    });
+    sortTerms(); // ALWAYS keep sorted after filtering
+  });
+</script>
 </body>
 </html>
