@@ -47,6 +47,17 @@
 
 <div id="utilityBar">
   <button onclick="openGlossary()">Glossary</button>
+
+<script>
+  function openGlossary() {
+    fetch('glossary.html')
+      .then(res => res.text())
+      .then(html => {
+        // Send glossary HTML to parent page
+        parent.postMessage({ type: 'openGlossary', html: html }, '*');
+      });
+  }
+</script>
 </div>
 
 <!-- Modal -->
@@ -75,4 +86,5 @@
 
 </body>
 </html>
+
 
